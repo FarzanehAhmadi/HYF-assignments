@@ -338,6 +338,60 @@ gap: 2vh;
     width: 24px;
     height: 24px;
   }
+  /*footer*/
+
+  .footer-pic{
+    width:30px;
+    height:30px;
+    margin-left: 5px;
+    vertical-align: middle; 
+  }
+  .footer {
+      display: flex;
+      justify-content: space-between; 
+      padding: 20px; 
+      background-color: #c5b1d1;
+      color: white; 
+      flex-wrap: wrap; 
+  }
   
+  .footer-section {
+      flex: 1; 
+      padding: 0 25px; 
+      min-width: 200px;
+  }
+  
+  .footer-section h3 {
+      margin-bottom: 15px; 
+  }
+  
+  .footer-section ul {
+      list-style: none;
+  }
+  
+  .footer-section ul li {
+      margin-bottom: 5px; 
+  }
+  
+  .footer-section ul li a {
+      text-decoration: none;
+      color: white;
+  }
+  
+  .footer-section ul li a:hover {
+      text-decoration: underline; 
+     color: black;
+  }
+  
+  .footer-section p {
+      margin: 10px 0; 
+  }
+  
+  /* Map section specific styling */
+  .footer-section.map iframe {
+      border: 0;
+      width: 100%;
+      height: 200px; 
+  }
 
 
