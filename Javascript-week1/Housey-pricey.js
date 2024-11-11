@@ -26,7 +26,7 @@ else{
     console.log("Julia is paying too much!")
 }
 
-//using function for more excercise:)
+//I tried to use a function here just for more practice :)
 /*
 function housePrice(volumeInMeters, gardenSizeInM2){
     return volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300; 
