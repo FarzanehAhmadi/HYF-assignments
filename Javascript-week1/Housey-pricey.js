@@ -1,4 +1,4 @@
-/*
+
 const peterHouse = {
     width : 8,
     height:10,
@@ -6,7 +6,7 @@ const peterHouse = {
     garden:100,
     price:2500000
 }
-const pHousePrice = peterHouse.width * peterHouse.height*peterHouse.depth * 2.5 * 1000 + peterHouse.garden * 300;
+const peterExpectedPrice = peterHouse.width * peterHouse.height * peterHouse.depth * 2.5 * 1000 + peterHouse.garden * 300;
 const juliaHouse = {
     width : 5,
     height:8,
@@ -14,19 +14,20 @@ const juliaHouse = {
     garden:70,
     price:1000000
 }
-const jHousePrice = juliaHouse.width * juliaHouse.height*juliaHouse.depth * 2.5 * 1000 + juliaHouse.garden * 300;
-if(peterHouse.price <= pHousePrice )
+const juliaExpectedPrice = juliaHouse.width * juliaHouse.height * juliaHouse.depth * 2.5 * 1000 + juliaHouse.garden * 300;
+if(peterHouse.price <= peterExpectedPrice )
     console.log("Peter is paying too little!")
 else{
     console.log("Peter is paying too much!")
 }
-if(juliaHouse.price <= jHousePrice )
+if(juliaHouse.price <= juliaExpectedPrice )
     console.log("Julia is paying too little!")
 else{
     console.log("Julia is paying too much!")
 }
-*/
-//using function for excercise:)
+
+//using function for more excercise:)
+/*
 function housePrice(volumeInMeters, gardenSizeInM2){
     return volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300; 
 }
@@ -55,3 +56,4 @@ if(housePrice(volumeInMetersJ , juliaHouse.garden) > juliaHouse.price)
     console.log("Julia is paying too little!");
 else
     console.log("Julia is paying too much!")
+*/
