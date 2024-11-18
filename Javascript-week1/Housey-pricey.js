@@ -14,6 +14,7 @@ const juliaHouse = {
     garden:70,
     price:1000000
 }
+//test
 const juliaExpectedPrice = juliaHouse.width * juliaHouse.height * juliaHouse.depth * 2.5 * 1000 + juliaHouse.garden * 300;
 if(peterHouse.price <= peterExpectedPrice )
     console.log("Peter is paying too little!")
