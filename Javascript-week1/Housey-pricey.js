@@ -25,7 +25,7 @@ if(juliaHouse.price <= juliaExpectedPrice )
 else{
     console.log("Julia is paying too much!")
 }
-
+//test
 //using function for more excercise:)
 /*
 function housePrice(volumeInMeters, gardenSizeInM2){
