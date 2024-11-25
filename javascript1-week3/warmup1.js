@@ -17,7 +17,8 @@ function removeName(arr,name){
   arr.splice(index,1);
   return arr;
   }
-  removeName(names,"Ahmad")
+  
+removeName(names,"Ahmad")
   
 // Code done
 
