@@ -1,0 +1,44 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: azure;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.user-choice{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}
+.get-name-button{
+  width: 190px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background-color: rgb(56, 188, 173);
+  font-weight: bold;
+}
+
+.get-name-button:hover{
+  width: 102%;
+  background-color: rgb(124, 197, 188);
+}
+
+.name-input{
+  width: 180px;
+  height: 30px;
+}
