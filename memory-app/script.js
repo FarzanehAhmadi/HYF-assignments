@@ -36,6 +36,22 @@ easyButtElement.addEventListener('click', () => getImagesForGame('easy'));
 mediumButtElement.addEventListener('click', () => getImagesForGame('medium'));
 hardButtElement.addEventListener('click', () => getImagesForGame('hard'));
 
+//stats elements:
+const statsElement = document.createElement('div');
+statsElement.classList.add('stats');
+containerElement.appendChild(statsElement);
+  //Player moves
+const moveCounterElement = document.createElement('p');
+statsElement.appendChild(moveCounterElement);
+moveCounterElement.innerText = `Moves: 0`
+  // Timer
+const timerElement = document.createElement('p');
+statsElement.appendChild(timerElement);
+timerElement.classList.add('timer');
+timerElement.innerText = `Time: 00.00.00`;
+let timer;
+let seconds = 0;
+
 
 let gameStarted = false;
 let flippedCards = []; 
@@ -155,21 +171,6 @@ function countPlayerMoves(){
   moveCounterElement.innerText = `Moves: ${moveCounter}`
 }
 
-const statsElement = document.createElement('div');
-statsElement.classList.add('stats');
-containerElement.appendChild(statsElement);
-//Player moves
-const moveCounterElement = document.createElement('p');
-statsElement.appendChild(moveCounterElement);
-moveCounterElement.innerText = `Moves: 0`
-
-// Timer
-const timerElement = document.createElement('p');
-statsElement.appendChild(timerElement);
-timerElement.classList.add('timer');
-timerElement.innerText = `Time: 00.00.00`;
-let timer;
-let seconds = 0;
 function startTimer(){
   if(!timer){
     timer = setInterval(() => {
