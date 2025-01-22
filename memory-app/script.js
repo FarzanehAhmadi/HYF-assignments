@@ -63,10 +63,11 @@ let seconds = 0;
 let gameStarted = false;
 let flippedCards = []; 
 
-
+let picturesLenght= 0;
 
 async function getImagesForGame(level) {
   resetGameState();
+  
   try {
     const picturesResponse = await fetch (`https://raw.githubusercontent.com/FarzanehAhmadi/FarzanehAhmadi.github.io/refs/heads/main/${level}.json`);
 
@@ -76,7 +77,6 @@ async function getImagesForGame(level) {
 
     const pictures = await picturesResponse.json();
     const picList = [];
-
     //Duplicate 
     pictures.forEach( (pic) => {
       picList.push(pic);
@@ -95,16 +95,17 @@ async function getImagesForGame(level) {
       const card = createCard(pic);
       cardElement.appendChild(card);
     });
+    picturesLenght = 0;
+    picturesLenght = picList.length;
   } catch (error) {
     console.error("Error loading game images:", error)
   }
 }
 
 
-
-
 // Reset game stats
 function resetGameState (){
+  
   flippedCards = [];
   moveCounter = 0;
   moveCounterElement.innerText = `Moves: ${moveCounter}`;
@@ -166,9 +167,19 @@ function flipCard() {
     const secondCardImgSrc = secondCard.querySelector('.card-front img').src;
 
     if(firstCardImgSrc === secondCardImgSrc){
+      setTimeout(()=>{
         flippedCards = [];
         firstCard.classList.add('matched')     
-        secondCard.classList.add('matched')     
+        secondCard.classList.add('matched')   
+
+        const matchedCards = document.querySelectorAll('.matched');
+        if(matchedCards.length === picturesLenght){
+          stopTimer();
+          alert(`Congratulations!
+You could finish the game with ${moveCounter} moves and in ${timerElement.innerText.split(' ')[1]}.`)
+        }
+
+      }, 500);
     } else{
       setTimeout(() => {
         flippedCards.forEach((card) => card.classList.remove('flipped'));
@@ -198,6 +209,12 @@ function formatTime(totalSeconds){
   const minutes = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2,'0');
   const secs = (totalSeconds %60).toString().padStart(2,'0');
   return `Time: ${hours}.${minutes}.${secs}`
+}
+function stopTimer() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null; 
+  }
 }
 //Reset game button
 function resetGame (){
