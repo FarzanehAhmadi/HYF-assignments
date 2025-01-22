@@ -11,6 +11,7 @@ let bestScore = {
   moves : 0,
   time : 0,
  }
+
 const bestScoreElement = document.createElement('div');
 containerElement.appendChild(bestScoreElement);
 bestScoreElement.classList.add('best-score');
@@ -74,9 +75,6 @@ let gameStarted = false;
 let flippedCards = []; 
 let picturesLenght = 0; // For checking completion
 
-//////
-updateBestScore();
-//////
 async function getImagesForGame(level) {
   resetGameState();
   
@@ -112,12 +110,12 @@ async function getImagesForGame(level) {
   } catch (error) {
     console.error("Error loading game images:", error)
   }
+  bestScoreElement.style.width ='500px'; //Adjust the width of the best score element to match the card grid size.
 }
 
 
 // Reset game stats
 function resetGameState (){
-  
   flippedCards = [];
   moveCounter = 0;
   moveCounterElement.innerText = `Moves: ${moveCounter}`;
@@ -208,6 +206,7 @@ You could finish the game with ${moveCounter} moves and in ${timerElement.innerT
 function countPlayerMoves(){
   moveCounter ++;
   moveCounterElement.innerText = `Moves: ${moveCounter}`
+  statsElement.style.display = 'flex';
 }
 
 function startTimer(){
@@ -234,6 +233,8 @@ function stopTimer() {
 function resetGame (){
   flippedCards = [];
   moveCounter = 0;
+  bestScoreElement.style.width ='600px'; //Adjust the width of the best score element to match the card grid size.
+  statsElement.style.display='none';
   moveCounterElement.innerText = `Moves: ${moveCounter}`;
   clearInterval(timer);
   timer = null;
@@ -256,6 +257,7 @@ function updateBestScore(){
   }
   bestMoves.innerText = `Top Record: ${bestScore.moves} moves`;
   bestTime.innerText = `Best ${formatTime(bestScore.time)}`;
+  bestScoreElement.style.display = 'flex';
 }
 //Extra: link to another game I developed:)
 const otherGames = document.createElement('div')
