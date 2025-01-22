@@ -99,7 +99,7 @@ img {
   transition: transform 0.3s ease-in-out;
 }
 .stats{
-  display: flex;
+  display: none;
   gap:50px
 }
 .reset-button{
@@ -121,9 +121,9 @@ img {
 }
 
 .best-score{
-  display: flex;
+  display: none;
   justify-content: center;
-  width: 600px;
+  width: 500px;
   gap : 100px;
   background-color: beige;
   font-weight: bold;
@@ -132,6 +132,7 @@ img {
   color: rgb(71, 33, 4);
   border-radius: 15px;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 .other-game-section {
   text-align: center;
