@@ -44,6 +44,7 @@ containerElement.appendChild(statsElement);
 const resetButtonEL = document.createElement('button');
 resetButtonEL.innerText = 'Reset';
 resetButtonEL.addEventListener('click', resetGame);
+resetButtonEL.classList.add('reset-button');
   //Player moves
 const moveCounterElement = document.createElement('p');
 statsElement.appendChild(moveCounterElement);
@@ -55,6 +56,7 @@ timerElement.classList.add('timer');
 timerElement.innerText = `Time: 00.00.00`;
 let timer;
 let seconds = 0;
+
 
 let gameStarted = false;
 let flippedCards = []; 
@@ -197,16 +199,16 @@ function resetGame (){
   timer = null;
   seconds = 0;
   timerElement.innerText = `Time: 00.00.00`;
-  
-  gameStarted = false;
 
+  gameStarted = false;
+  statsElement.removeChild(resetButtonEL)
   cardElement.innerHTML = '';
   levelContainer.appendChild(easyButtElement);
   levelContainer.appendChild(mediumButtElement);
   levelContainer.appendChild(hardButtElement);
 }
 
-//Extra: Adding link to another game I developed:)
+//Extra: ink to another game I developed:)
 const otherGames = document.createElement('div')
 otherGames.classList.add('other-game-section');
 containerElement.appendChild(otherGames);
