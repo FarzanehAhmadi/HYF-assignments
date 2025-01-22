@@ -6,6 +6,18 @@ titleElement.classList.add('title');
 titleElement.innerHTML = 'Memory Game';
 
 containerElement.appendChild(titleElement);
+//Best score
+let bestScore = {
+  moves : 0,
+  time : 0,
+ }
+const bestScoreElement = document.createElement('div');
+containerElement.appendChild(bestScoreElement);
+bestScoreElement.classList.add('best-score');
+const bestMoves = document.createElement('p');
+bestScoreElement.appendChild(bestMoves);
+const bestTime = document.createElement('p');
+bestScoreElement.appendChild(bestTime);
 
 // Card Elements
 const cardElement = document.createElement('div');
@@ -58,13 +70,13 @@ timerElement.innerText = `Time: 00.00.00`;
 let timer;
 let seconds = 0;
 
-
-
 let gameStarted = false;
 let flippedCards = []; 
+let picturesLenght = 0; // For checking completion
 
-let picturesLenght= 0;
-
+//////
+updateBestScore();
+//////
 async function getImagesForGame(level) {
   resetGameState();
   
@@ -175,6 +187,8 @@ function flipCard() {
         const matchedCards = document.querySelectorAll('.matched');
         if(matchedCards.length === picturesLenght){
           stopTimer();
+          updateBestScore();
+          console.log(bestScore);
           alert(`Congratulations!
 You could finish the game with ${moveCounter} moves and in ${timerElement.innerText.split(' ')[1]}.`)
         }
@@ -233,8 +247,17 @@ function resetGame (){
   levelContainer.appendChild(mediumButtElement);
   levelContainer.appendChild(hardButtElement);
 }
-
-//Extra: ink to another game I developed:)
+function updateBestScore(){
+  if(bestScore.moves === 0 || moveCounter < bestScore.moves){
+    bestScore.moves = moveCounter;
+  }
+  if(bestScore.time === 0 || seconds < bestScore.time){
+    bestScore.time = seconds;
+  }
+  bestMoves.innerText = `Top Record: ${bestScore.moves} moves`;
+  bestTime.innerText = `Best ${formatTime(bestScore.time)}`;
+}
+//Extra: link to another game I developed:)
 const otherGames = document.createElement('div')
 otherGames.classList.add('other-game-section');
 containerElement.appendChild(otherGames);
