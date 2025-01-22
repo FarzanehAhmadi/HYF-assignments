@@ -94,7 +94,10 @@ img {
   transition: box-shadow 0.3s ease; 
   cursor: pointer;
 }
-
+.stats{
+  display: flex;
+  gap:50px
+}
 .other-game-section {
   position: fixed;
   bottom: 20px;
