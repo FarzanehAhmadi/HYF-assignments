@@ -37,8 +37,6 @@ mediumButtElement.addEventListener('click', () => getImagesForGame('medium'));
 hardButtElement.addEventListener('click', () => getImagesForGame('hard'));
 
 
-
-
 let gameStarted = false;
 let flippedCards = []; 
 
@@ -187,3 +185,8 @@ function formatTime(totalSeconds){
   return `Time: ${hours}.${minutes}.${secs}`
 }
 
+//Extra: Adding link to another game I developed:)
+const otherGames = document.createElement('div')
+otherGames.classList.add('other-game-section');
+containerElement.appendChild(otherGames);
+otherGames.innerHTML = 'Check Out My Other Games: <a href="https://farzanehahmadi.github.io/Rock-Paper-Scissors-JS/" target="_blank">Rock Paper Scissors</a>';
