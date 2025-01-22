@@ -189,4 +189,4 @@ function formatTime(totalSeconds){
 const otherGames = document.createElement('div')
 otherGames.classList.add('other-game-section');
 containerElement.appendChild(otherGames);
-otherGames.innerHTML = 'Check Out My Other Games: <a href="https://farzanehahmadi.github.io/Rock-Paper-Scissors-JS/" target="_blank">Rock Paper Scissors</a>';
+otherGames.innerHTML = 'Check Out My Other Games: <a href="https://game-rps-javascript.netlify.app/" target="_blank">Rock Paper Scissors</a>';
