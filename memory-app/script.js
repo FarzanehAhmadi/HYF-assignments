@@ -37,6 +37,8 @@ mediumButtElement.addEventListener('click', () => getImagesForGame('medium'));
 hardButtElement.addEventListener('click', () => getImagesForGame('hard'));
 
 
+
+
 let gameStarted = false;
 let flippedCards = []; 
 
@@ -127,12 +129,25 @@ function flipCard() {
   countPlayerMoves();
 
   if (flippedCards.length === 2) {
-    setTimeout(() => {
-      flippedCards.forEach((card) => card.classList.remove('flipped'));
-      flippedCards = []; // Reset for the next pair
-    }, 2000);
+    const [firstCard, secondCard] = flippedCards;
+
+    const firstCardImgSrc = firstCard.querySelector('.card-front img').src;
+    const secondCardImgSrc = secondCard.querySelector('.card-front img').src;
+
+    if(firstCardImgSrc === secondCardImgSrc){
+      setTimeout(() => {
+        flippedCards = [];
+      }, 500); // Short delay to allow players to see the match
+    } else{
+      setTimeout(() => {
+        flippedCards.forEach((card) => card.classList.remove('flipped'));
+        flippedCards = []; // Reset for the next pair
+      }, 2000);
+    }
+    }
+    
   }
-}
+
 
 //Timer and stats 
 let moveCounter = 0;
@@ -171,3 +186,4 @@ function formatTime(totalSeconds){
   const secs = (totalSeconds %60).toString().padStart(2,'0');
   return `Time: ${hours}.${minutes}.${secs}`
 }
+
