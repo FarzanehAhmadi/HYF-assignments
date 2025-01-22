@@ -49,6 +49,7 @@ resetButtonEL.classList.add('reset-button');
 const moveCounterElement = document.createElement('p');
 statsElement.appendChild(moveCounterElement);
 moveCounterElement.innerText = `Moves: 0`
+let moveCounter = 0;
   // Timer
 const timerElement = document.createElement('p');
 statsElement.appendChild(timerElement);
@@ -58,18 +59,25 @@ let timer;
 let seconds = 0;
 
 
+
 let gameStarted = false;
 let flippedCards = []; 
 
-// Fetch function for each level
-const getImagesForGame = (level) => {
+
+
+async function getImagesForGame(level) {
   resetGameState();
-  // Fetch pictures from API
-  fetch(`https://raw.githubusercontent.com/FarzanehAhmadi/FarzanehAhmadi.github.io/refs/heads/main/${level}.json`)
-  .then((res) => res.json())
-  .then((data) => {
-    const pictures = data;
+  try {
+    const picturesResponse = await fetch (`https://raw.githubusercontent.com/FarzanehAhmadi/FarzanehAhmadi.github.io/refs/heads/main/${level}.json`);
+
+    if (!picturesResponse.ok) {
+      throw new Error(`Failed to fetch images: ${picturesResponse.status}`);
+    }
+
+    const pictures = await picturesResponse.json();
     const picList = [];
+
+    //Duplicate 
     pictures.forEach( (pic) => {
       picList.push(pic);
       picList.push(pic);
@@ -87,8 +95,13 @@ const getImagesForGame = (level) => {
       const card = createCard(pic);
       cardElement.appendChild(card);
     });
-  })
+  } catch (error) {
+    console.error("Error loading game images:", error)
+  }
 }
+
+
+
 
 // Reset game stats
 function resetGameState (){
@@ -131,7 +144,6 @@ function createCard (pic){
 }
 
 function flipCard() {
-
   if (!gameStarted) {
     startTimer();
     gameStarted = true;
@@ -163,13 +175,11 @@ function flipCard() {
         flippedCards = [];
       }, 1000);
     }
-    }
   }
+}
 
 
 //Timer and stats 
-let moveCounter = 0;
-
 function countPlayerMoves(){
   moveCounter ++;
   moveCounterElement.innerText = `Moves: ${moveCounter}`
