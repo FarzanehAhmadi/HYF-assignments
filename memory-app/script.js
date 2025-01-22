@@ -154,17 +154,16 @@ function flipCard() {
     const secondCardImgSrc = secondCard.querySelector('.card-front img').src;
 
     if(firstCardImgSrc === secondCardImgSrc){
-      setTimeout(() => {
         flippedCards = [];
-      }, 500); // Short delay to allow players to see the match
+        firstCard.classList.add('matched')     
+        secondCard.classList.add('matched')     
     } else{
       setTimeout(() => {
         flippedCards.forEach((card) => card.classList.remove('flipped'));
-        flippedCards = []; // Reset for the next pair
-      }, 2000);
+        flippedCards = [];
+      }, 1000);
     }
     }
-    
   }
 
 
